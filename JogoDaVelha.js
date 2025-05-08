@@ -4,56 +4,61 @@ let players = {
     p1: null,
     p2: null
 }
-let placarX = 0, placarO = 0;
 
-mesa.addEventListener('click', function(e){
+let placarX = 0, placarO = 0;
+let jogoAtivo = true;
+
+mesa.addEventListener('click', function(e) {
+    if (!jogoAtivo) return; 
+
     const casa = e.target;
-    if(players.p1 === 'x' && casa.innerHTML === ''){
+    if (players.p1 === 'x' && casa.innerHTML === '') {
         casa.innerHTML = "X";
         players = {
             p1: 'o',
             p2: 'x'
-        }
+        };
     } 
-    else if(players.p1 === 'o' && casa.innerHTML === ''){
+    else if (players.p1 === 'o' && casa.innerHTML === '') {
         casa.innerHTML = 'O';
         players = {
             p1: 'x',
             p2: 'o'
-        }
-    }
-    else{
+        };
+    } 
+    else {
         alert('selecione X ou O');
     }
-   
-      // Verifica a vitória após cada jogada
-      const resultado = verificarVitoria();
-      
-        if (resultado === 'X' || resultado === 'O') {
-            if (resultado === 'X') {
-                casa.innerHTML = "X";
-                placarX++;
-            } else {
-                casa.innerHTML = 'O';
-                placarO++;
-            }
-            placar.innerHTML = `
-                <span id="placarX" class="placarX">❌ = ${placarX}</span> | <span id="placarO" class="placarO">⭕️ = ${placarO}</span>
-            `;
-            setTimeout(() => {
-                alert(`O jogador ${resultado} venceu!`);
-                limparMesa();
-            }, 1000); 
-        } else if (resultado === 'empate') {
-            animarEmpate();
-            setTimeout(() => {
-                alert('Deu velha! O jogo empatou!');
-                limparMesa();
-            }, 1000); 
-        }
-      
 
-})
+    const resultado = verificarVitoria();
+
+    if (resultado === 'X' || resultado === 'O') {
+        jogoAtivo = false; 
+        if (resultado === 'X') {
+            casa.innerHTML = "X";
+            placarX++;
+        } else {
+            casa.innerHTML = 'O';
+            placarO++;
+        }
+        placar.innerHTML = `
+            <span id="placarX" class="placarX">❌ = ${placarX}</span> | <span id="placarO" class="placarO">⭕️ = ${placarO}</span>
+        `;
+        setTimeout(() => {
+            alert(`O jogador ${resultado} venceu!`);
+            limparMesa();
+            jogoAtivo = true; 
+        }, 1100);
+    } else if (resultado === 'empate') {
+        jogoAtivo = false; 
+        animarEmpate();
+        setTimeout(() => {
+            alert('Deu velha! O jogo empatou!');
+            limparMesa();
+            jogoAtivo = true; 
+        }, 1000);
+    }
+});
 
 function animarEmpate(){
  const mesa = document.getElementById('mesa');
@@ -106,7 +111,10 @@ function reiniciar(){
         `
         alert("Jogo reiniciado")
     }
+    placarX = 0, placarO = 0;
 }
+
+
 
 function verificarVitoria() {
     const c1 = document.getElementById('c1');
@@ -131,6 +139,17 @@ function verificarVitoria() {
         if (linha[0].innerHTML && linha[0].innerHTML === linha[1].innerHTML && linha[0].innerHTML === linha[2].innerHTML) {
             // Adiciona a classe 'riscar' às casas vencedoras
             linha.forEach(casa => casa.classList.add('vitoria'));
+            if(linha[0].innerHTML === 'x'){
+                players = {
+                p1: 'x',
+                p2: 'o'
+            }
+            }else{
+                players = {
+                    p1: 'o',
+                    p2: 'x'
+                }
+            }
             return linha[0].innerHTML; // Retorna 'X' ou 'O' se houver um vencedor
         }
     }
