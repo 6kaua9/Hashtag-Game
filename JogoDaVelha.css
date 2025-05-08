@@ -1,0 +1,146 @@
+
+table td{
+    text-align: center;
+    border: 1px solid black;
+    height: 90px;
+    width: 90px;
+    font-size: 200%;
+}
+
+table{
+    background-color: aliceblue;
+}
+
+h2{
+    justify-self: center;
+    font-weight: lighter;
+    font-size: xx-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.mesa{
+ display: flex;
+ justify-content: center;
+ width: fit-content;
+}
+
+.MESA{
+ display: flex;
+ flex-direction: column;
+ justify-self: center;
+}
+
+.reiniciarBtn{
+    font-size: 105%;
+ width: 290px;
+ cursor: pointer;
+ border-radius: 20px;
+ background-color: rgb(132, 132, 246); 
+}
+
+.enunciado{
+    text-decoration:underline;
+    display: flex;
+    width: 290px;
+    font-size: larger;
+}
+
+.placar{
+    margin-top: 20px;
+    margin-bottom: 25px;
+    border: 2px solid black;
+    width: 285px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    gap: 60px;
+    font-size: large;
+    background-color: rgb(132, 132, 246);
+    align-items: center;
+    flex-wrap: nowrap;  
+}
+
+.placarX{
+    cursor: pointer;
+    padding-right: 4px;
+   margin-left: 4px;
+   
+}
+.placarO{
+    cursor: pointer;
+    padding-left: 4px;
+  
+}
+
+#c1{
+    border-top: none;
+    border-left: none;
+}
+
+#c3{
+    border-top: none;
+    border-right: none;
+}
+
+#c2{
+    border-top: none;
+}
+
+#c7{
+ border-bottom: none;
+ border-left: none;
+}
+#c8{
+    border-bottom: none;
+}
+
+#c9{
+    border-bottom: none;
+    border-right: none;
+}
+
+#c4{
+    border-left: none;
+}
+
+
+#c6{
+    border-right: none;
+}
+
+@keyframes crescer {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* Aumenta o tamanho em 10% */
+        background-color: antiquewhite;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.animar-empate {
+    animation-name: crescer;
+    animation-duration: 1.2s;
+}
+
+@keyframes vitoria {
+    0% {
+        
+    }
+    50% {
+        background-color: rgba(255, 0, 0, 0.3); 
+        font-size: 220%;
+    }
+    100% {
+        background-color: rgba(255, 0, 0, 0.6);
+        font-size: 200%;
+    }
+}
+
+.vitoria{
+    animation: vitoria 1s;
+}

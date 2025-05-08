@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="JogoDaVelha.css">
+    <title>Hashtag Game</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Hashtag Game</h2>
+        <div class="MESA">
+            <span class="enunciado" id="enunciado">Escolha X ou O para começar</span>
+            <div class="placar" id="placar">
+                <span id="placarX" class="placarX">❌</span> | <span id="placarO" class="placarO">⭕️</span>
+            </div>
+            
+            <table class="mesa" id="mesa">
+                <tr>
+                    <td class="casa" id="c1"></td>
+                    <td class="casa" id="c2"></td>
+                    <td class="casa" id="c3"></td>
+                </tr>
+                <tr>
+                    <td class="casa" id="c4"></td>
+                    <td class="casa" id="c5"></td>
+                    <td class="casa" id="c6"></td>
+                </tr>
+                <tr>
+                    <td class="casa" id="c7"></td>
+                    <td class="casa" id="c8"></td>
+                    <td class="casa" id="c9"></td>
+                </tr>
+            </table>
+            <br>
+            <button class="reiniciarBtn" onclick="reiniciar()">Reiniciar Jogo</button>
+        </div>
+    </div>
+</body>
+ <script src="JogoDaVelha.js"></script>
+</html>
